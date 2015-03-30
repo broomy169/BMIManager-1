@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -5,6 +6,9 @@ import java.util.Scanner;
  * Created by Jason on 13/03/2015.
  */
 public class App {
+    public App() {
+    }
+
     public static void main(String[] args) {
         System.out.println("BMI Manager");
 
@@ -15,7 +19,9 @@ public class App {
                     "following menu options:\n" +
                     "\t1. Add new patient\n" +
                     "\t2. View patients\n" +
-                    "\t3. Exit\n");
+                    "\t3. Update patient\n" +
+                    "\t4. Remove patient\n" +
+                    "\t5. Exit\n");
 
             System.out.print("Enter choice: ");
             Scanner scanner = new Scanner(System.in);
@@ -35,7 +41,18 @@ public class App {
                     }
                     break;
                 }
+
                 case 3: {
+                    updatePatient(patients,scanner);
+                    break;
+                }
+
+                case 4: {
+                    removePatients(patients,scanner);
+                    break;
+                }
+
+                case 5: {
                     System.out.println("Good bye!");
                     break running;
                 }
@@ -66,5 +83,31 @@ public class App {
         double weight = scanner.nextDouble();
 
         return new Patient(name, age, height, weight);
+    }
+
+    private static void updatePatient(Patients patients, Scanner scanner){
+        System.out.print("Enter name: ");
+        String name = scanner.nextLine();
+        for (Patient patient : patients.records) {
+            if (patient.getName().equals(name)){
+                System.out.print("Enter new age: ");
+                int age = scanner.nextInt();
+                System.out.print("Enter new height: ");
+                double height = scanner.nextDouble();
+                System.out.print("Enter new weight: ");
+                double weight = scanner.nextDouble();
+                patient.setAge(age);
+                patient.setHeight(height);
+                patient.setWeight(weight);
+                break;
+            }
+        }
+    }
+
+    private static void removePatients(Patients patients, Scanner scanner){
+        System.out.print("Enter name: ");
+        String name = scanner.nextLine();
+        patients.removePatientsName(name);
+
     }
 }

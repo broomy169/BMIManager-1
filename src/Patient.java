@@ -15,6 +15,18 @@ public class Patient {
         this.weight = weight;
     }
 
+    public void setAge(int age){
+        this.age = age;
+    }
+
+    public void setHeight(double height){
+        this.height = height;
+    }
+
+    public void setWeight(double weight){
+        this.weight = weight;
+    }
+
     public String getName() {
         return name;
     }

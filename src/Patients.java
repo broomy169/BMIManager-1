@@ -27,6 +27,15 @@ public class Patients {
     public boolean isEmpty() {
         return records.isEmpty();
     }
+
+    public void removePatientsName(String name) {
+        for (int i = 0; i <records.size(); ++i){
+            if (records.get(i).getName().equals(name)){
+                records.remove(i);
+                --i;
+            }
+        }
+    }
 }
 
 
